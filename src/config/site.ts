@@ -38,6 +38,7 @@ export const siteConfig = {
     tmdb: "https://www.themoviedb.org",
     spotify: "https://spotify.com",
     goodreads: "https://goodreads.com",
+    googleBooks: "https://developers.google.com/books/docs/overview",
   },
   author: {
     name: "Anuj Joshi",

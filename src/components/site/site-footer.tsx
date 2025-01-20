@@ -76,6 +76,13 @@ export const SiteFooter: React.FC<ComponentProps<"footer">> = () => {
                 rel="noopener noreferrer"
                 className="font-medium text-foreground hover:underline">
                 TMDB
+              </Link>{" "}
+              <Link
+                href={siteConfig.links.googleBooks}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-foreground hover:underline">
+                Google Books
               </Link>
               .
             </p>
