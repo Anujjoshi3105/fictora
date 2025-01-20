@@ -1,23 +1,22 @@
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
-    <div className="container flex h-[40vh] items-end justify-center">
-      <div className="text-center">
-        <h1 className="text-2xl">404</h1>
-        <p className="text-muted-foreground">
-          The page you are looking for does not exist.
-          <br />
-          Please go back to the homepage.
-        </p>
-        <Link
-          href="/"
-          className={cn(buttonVariants({ variant: "default" }), "mt-6")}>
-          Go Home
-        </Link>
+    <main className="flex min-h-[70vh] flex-col items-center justify-center bg-background text-foreground">
+      <h1 className="mb-2 text-7xl md:text-9xl font-bold tracking-tight">
+        404
+      </h1>
+      <h2 className="mb-4 text-xl md:text-2xl font-semibold">Page Not Found</h2>
+      <p className="mb-8 md:text-xl text-muted-foreground max-w-md text-center">
+        We&apos;re sorry, but the page you are looking for doesn&apos;t exist or
+        has been moved.
+      </p>
+      <div className="flex">
+        <Button asChild size="lg">
+          <Link href="/">Go back home</Link>
+        </Button>
       </div>
-    </div>
+    </main>
   );
 }

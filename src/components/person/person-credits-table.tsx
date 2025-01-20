@@ -62,7 +62,7 @@ export const PersonCreditsTable: React.FC<PersonCreditsTableProps> = ({
 
   return (
     <Command>
-      <div className="space-y-4">
+      <div className="space-y-4 p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-medium">{department}</h2>
 

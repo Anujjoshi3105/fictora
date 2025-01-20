@@ -37,7 +37,7 @@ export const SearchResultCard: React.FC<SearchResultCardProps> = ({
               className="mr-2"
             />
           )}
-          <Badge className="border-foreground capitalize" variant="outline">
+          <Badge variant="outline">
             {media.media_type === "tv" ? "TV Show" : media.media_type}
           </Badge>
 

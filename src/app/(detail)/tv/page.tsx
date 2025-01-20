@@ -22,7 +22,6 @@ export default async function Movies() {
       <TvHero tvShows={tvShows} label="Trending Now" />
       <section className="container space-y-8 py-12">
         <TrendCarousel
-          type="tv"
           title="Trending TV Shows"
           link="/trending/tv"
           items={tvShows}

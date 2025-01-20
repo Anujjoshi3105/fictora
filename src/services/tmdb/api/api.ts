@@ -1,11 +1,11 @@
-import apiConfig from "./config"
+import apiConfig from "./config";
 
 type FetcherOptions = {
-  endpoint: string
-  params?: Record<string, string | undefined>
-}
+  endpoint: string;
+  params?: Record<string, string | undefined>;
+};
 
-type Fetcher = <T>(options: FetcherOptions, init?: RequestInit) => Promise<T>
+type Fetcher = <T>(options: FetcherOptions, init?: RequestInit) => Promise<T>;
 
 /**
  * Sanitizes the given parameters by removing entries with undefined values.
@@ -17,8 +17,8 @@ type Fetcher = <T>(options: FetcherOptions, init?: RequestInit) => Promise<T>
 const sanitizeParams = (params?: Record<string, string | undefined>) => {
   return Object.fromEntries(
     Object.entries(params ?? {}).filter(([, value]) => value !== undefined)
-  )
-}
+  );
+};
 
 /**
  * Creates a URL search params string from the given parameters.
@@ -29,14 +29,14 @@ const sanitizeParams = (params?: Record<string, string | undefined>) => {
  * @returns {string} The URL search params string.
  */
 const createSearchParams = (params: Record<string, string | undefined>) => {
-  const sanitizedParams = sanitizeParams(params)
+  const sanitizedParams = sanitizeParams(params);
   const mergedParams: Record<string, string> = {
     ...apiConfig.defaultParams,
     ...sanitizedParams,
-  } as Record<string, string>
+  } as Record<string, string>;
 
-  return new URLSearchParams(mergedParams).toString()
-}
+  return new URLSearchParams(mergedParams).toString();
+};
 
 /**
  * Creates a Headers instance for the fetch request.
@@ -46,10 +46,10 @@ const createSearchParams = (params: Record<string, string | undefined>) => {
  * @returns {Headers} The Headers instance for the fetch request.
  */
 const createHeaders = (init?: RequestInit): Headers => {
-  const headers = init?.headers ?? {}
-  const mergedHeaders = { ...apiConfig.defaultHeaders, ...headers }
-  return new Headers(mergedHeaders)
-}
+  const headers = init?.headers ?? {};
+  const mergedHeaders = { ...apiConfig.defaultHeaders, ...headers };
+  return new Headers(mergedHeaders);
+};
 
 /**
  * Fetches data from the specified endpoint using the provided parameters and initialization options.
@@ -63,18 +63,18 @@ const createHeaders = (init?: RequestInit): Headers => {
  * @returns {Promise<T>} A promise resolving to the response JSON in the expected type.
  */
 const fetcher: Fetcher = async ({ endpoint, params }, init) => {
-  const sanitizedParams = sanitizeParams(params)
-  const _params = createSearchParams(sanitizedParams)
-  const _headers = createHeaders(init)
+  const sanitizedParams = sanitizeParams(params);
+  const _params = createSearchParams(sanitizedParams);
+  const _headers = createHeaders(init);
 
   const _init = {
     ...init,
     next: { revalidate: 600, ...init?.next },
     headers: _headers,
-  }
+  };
 
-  const url = `${apiConfig.baseUrl}/${endpoint}?${_params}`
-  const response = await fetch(url, _init)
+  const url = `${apiConfig.baseUrl}/${endpoint}?${_params}`;
+  const response = await fetch(url, _init);
 
   // if (!response.ok) {
   //   throw new Error(
@@ -82,9 +82,9 @@ const fetcher: Fetcher = async ({ endpoint, params }, init) => {
   //   )
   // }
 
-  return await response.json()
-}
+  return await response.json();
+};
 
 export const api = {
   fetcher,
-}
+};

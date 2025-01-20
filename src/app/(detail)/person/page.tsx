@@ -26,7 +26,6 @@ export default async function Movies() {
       <MovieHero movies={movies} label="Trending Now" />
 
       <TrendCarousel
-        type="movie"
         title="Trending Movies"
         link="/trending/movie"
         items={movies}
@@ -42,7 +41,6 @@ export default async function Movies() {
       </div>
 
       <TrendCarousel
-        type="tv"
         title="Trending TV Shows"
         link="/trending/tv"
         items={tvShows}

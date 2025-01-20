@@ -1,56 +1,42 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { setConsent, getConsent } from "@/app/actions";
 
 const bannerVariants = {
   hidden: { y: "100%", opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 15,
-    },
+    transition: { type: "spring", stiffness: 80, damping: 15 },
   },
   exit: {
     y: "100%",
     opacity: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 15,
-    },
+    transition: { type: "spring", stiffness: 80, damping: 15 },
   },
 };
 
 export default function CookieBanner() {
-  const [isVisible, setIsVisible] = useState(false);
-  const [hasScrolledThreshold, setHasScrolledThreshold] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const viewportHeight = window.innerHeight;
-
-      if (scrollPosition >= viewportHeight && !hasScrolledThreshold) {
-        setHasScrolledThreshold(true);
-        setIsVisible(true);
-      }
+    const checkConsent = async () => {
+      const consent = await getConsent();
+      setIsVisible(consent === undefined);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    checkConsent();
+  }, []);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasScrolledThreshold]);
-
-  const handleDismiss = () => {
+  const handleConsent = async (consent: boolean) => {
+    await setConsent(consent);
     setIsVisible(false);
   };
+
+  if (isVisible === null) return null;
 
   return (
     <AnimatePresence>
@@ -61,28 +47,26 @@ export default function CookieBanner() {
           animate="visible"
           exit="exit"
           variants={bannerVariants}>
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 ">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              We use our own cookies as well as third-party cookies on our
-              websites to enhance your experience, analyze our traffic, and for
-              security and marketing. Select Accept All to allow them to be
-              used. Read our Cookie Policy.
+              We use cookies to enhance your experience, analyze our traffic,
+              and for security and marketing. Choose &quot;Accept All&quot; to
+              allow all cookies or &quot;Necessary Only&quot; for essential
+              cookies only.
             </p>
             <div className="flex items-center gap-2 shrink-0">
               <Button
                 variant="outline"
                 size="sm"
                 className="bg-background hover:bg-accent"
-                aria-label="Accept all cookies"
-                onClick={handleDismiss}>
-                Accept All
+                onClick={() => handleConsent(false)}>
+                Necessary Only
               </Button>
               <Button
                 size="sm"
                 className="bg-primary hover:bg-primary/90"
-                aria-label="Accept only necessary cookies"
-                onClick={handleDismiss}>
-                Necessary Only
+                onClick={() => handleConsent(true)}>
+                Accept All
               </Button>
             </div>
           </div>

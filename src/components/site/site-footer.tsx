@@ -12,40 +12,44 @@ export const SiteFooter: React.FC<ComponentProps<"footer">> = () => {
     <footer className="border-t bg-muted/20 py-6 md:py-12">
       <div className="container px-4 md:px-6">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5 text-center">
+        <div className="grid justify-between grid-cols-1 gap-12 lg:grid-cols-4 text-center">
           {/* Logo and description section */}
-          <div className="flex flex-col items-center md:items-start md:text-left space-y-4">
+          <div className="flex flex-col items-center lg:items-start lg:text-left space-y-4">
             <Link href="/" className="flex items-center space-x-4 group">
               <Icons.Logo className="size-12 fill-current text-primary group-hover:scale-125 duration-200" />
               <h4 className="text-lg md:text-xl font-bold text-primary">
                 {siteConfig.name.split(" ")[0]}
               </h4>
             </Link>
-            <p className="text-sm text-muted-foreground max-w-md md:max-w-xs">
+            <p className="text-sm text-muted-foreground max-w-md md:max-w-lg lg:max-w-xs">
               {siteConfig.description}
             </p>
           </div>
 
           {/* Navigation sections */}
-          <div className="col-span-1 md:col-span-1 lg:col-span-4">
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
-              {navigation.items.slice(1).map((item) => (
-                <div key={item.title} className="space-y-3">
-                  <h5 className="text-base font-semibold">{item.title}</h5>
-                  <ul className="space-y-1">
-                    {item.items?.map((subitem) => (
-                      <li key={subitem.href}>
-                        <Link
-                          href={subitem.href}
-                          prefetch={false}
-                          className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
-                          {subitem.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+          <div className="col-span-1 md:col-span-1 lg:col-span-3">
+            <div className="grid sm:grid-cols-2 gap-8 md:grid-cols-2 lg:grid-cols-4">
+              {navigation.items.map(
+                (item) =>
+                  item.items &&
+                  item.items?.length > 0 && (
+                    <div key={item.title} className="space-y-3">
+                      <h5 className="text-base font-semibold">{item.title}</h5>
+                      <ul className="space-y-1">
+                        {item.items.slice(1).map((subitem) => (
+                          <li key={subitem.href}>
+                            <Link
+                              href={subitem.href}
+                              prefetch={false}
+                              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                              {subitem.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )
+              )}
             </div>
           </div>
         </div>

@@ -52,8 +52,19 @@ const people = ({ time, page = "1" }: TrendingRequestParams) =>
     },
   });
 
+const all = ({ time, page = "1" }: TrendingRequestParams) =>
+  api.fetcher<
+    ListResponse<MovieWithMediaType | TvShowWithMediaType | PersonWithMediaType>
+  >({
+    endpoint: `trending/all/${time}`,
+    params: {
+      page,
+    },
+  });
+
 export const trending = {
   movie,
   tv,
   people,
+  all,
 };

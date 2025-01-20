@@ -19,12 +19,18 @@ import {
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { BookCard } from "../book/book-card";
+import { Book } from "@/services/book/api/types";
 
 interface TrendCarouselProps {
   title?: string;
   link?: string;
-  items: MovieWithMediaType[] | TvShowWithMediaType[] | PersonWithMediaType[];
-  type: "movie" | "tv" | "person";
+  items: (
+    | MovieWithMediaType
+    | TvShowWithMediaType
+    | PersonWithMediaType
+    | Book
+  )[];
 }
 
 export const TrendCarousel: React.FC<TrendCarouselProps> = ({
@@ -58,7 +64,7 @@ export const TrendCarousel: React.FC<TrendCarouselProps> = ({
   return (
     <Carousel opts={{ dragFree: true }} setApi={setApi}>
       <div className="mb-4 flex items-center justify-between gap-4 md:justify-start">
-        <h2 className="font-medium md:text-lg">{title}</h2>
+        <h2 className="font-medium md:text-lg capitalize">{title}</h2>
 
         {link && (
           <Link
@@ -92,12 +98,14 @@ export const TrendCarousel: React.FC<TrendCarouselProps> = ({
           <CarouselItem
             key={item.id}
             className="basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-            {item.media_type === "tv" ? (
+            {"media_type" in item && item.media_type === "movie" ? (
+              <MovieCard key={item.id} {...item} />
+            ) : "media_type" in item && item.media_type === "tv" ? (
               <TvCard key={item.id} {...item} />
-            ) : item.media_type === "person" ? (
+            ) : "media_type" in item && item.media_type === "person" ? (
               <PersonCard key={item.id} {...item} />
             ) : (
-              <MovieCard key={item.id} {...item} />
+              <BookCard key={item.id} {...item} />
             )}
           </CarouselItem>
         ))}

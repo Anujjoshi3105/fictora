@@ -21,7 +21,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    template: `%s: ${siteConfig.name}`,
   },
   metadataBase: siteConfig.metadataBase,
   applicationName: siteConfig.applicationName,

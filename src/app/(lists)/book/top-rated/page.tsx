@@ -1,4 +1,4 @@
-import { MovieList } from "@/components/movie/movie-list";
+import { BookList } from "@/components/book/book-list";
 import { pages } from "@/config";
 import type { Metadata } from "next";
 
@@ -9,18 +9,17 @@ interface ListPageProps {
 }
 
 export const metadata: Metadata = {
-  title: pages.movie.topRated.title,
-  description: pages.movie.topRated.description,
+  title: pages.books.topRated.title,
+  description: pages.books.topRated.description,
 };
 
 export default async function TopRated({ searchParams }: ListPageProps) {
   const { page = "1" } = await searchParams;
   return (
-    <MovieList
-      list="top_rated"
+    <BookList
       page={page}
-      title={pages.movie.topRated.title}
-      description={pages.movie.topRated.description}
+      title={pages.books.topRated.title}
+      description={pages.books.topRated.description}
     />
   );
 }

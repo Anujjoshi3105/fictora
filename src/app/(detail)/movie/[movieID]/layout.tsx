@@ -47,7 +47,6 @@ export default async function DetailLayout({
     id: movieID,
     append: "videos",
   });
-  console.log(movieID);
   if (!id) return notFound();
 
   return (

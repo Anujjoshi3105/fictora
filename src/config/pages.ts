@@ -76,6 +76,11 @@ const trending = {
     description:
       "Stay updated with the latest trends in movies, TV shows, books, and anime. Discover what’s capturing the world’s attention.",
   },
+  all: {
+    title: "Trending Now",
+    description:
+      "Explore the most popular and trending content across movies, TV shows, books, and anime. Stay connected to the world of entertainment.",
+  },
   movie: {
     title: "Trending Movies",
     description:

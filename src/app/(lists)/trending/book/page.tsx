@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 interface TrendingPageProps {
   searchParams: Promise<{
     page?: string;
+    [key: string]: string | undefined;
   }>;
 }
 
@@ -19,9 +20,8 @@ export default async function TrendingPage({
   const { page = "1" } = await searchParams;
   return (
     <TrendList
-      type="movie"
-      time="day"
-      title="Trending Movies"
+      type="book"
+      title={pages.trending.movie.title}
       description={pages.trending.movie.description}
       page={page}
     />

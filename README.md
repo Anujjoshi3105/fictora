@@ -1,8 +1,8 @@
-# Fictionix: Explore, Dream, Discover
+# [Fictora: Explore, Dream, Discover](https://fictora.netlify.app)
 
-Fictionix is a versatile platform for exploring movies, TV shows, novels, books, and anime. Built using TMDB API, Fictionix aims to deliver a seamless and engaging experience for entertainment enthusiasts. The platform currently focuses on movies, with plans to integrate Jikan and Google Books APIs for anime and book data.
+**[Fictora](https://fictora.netlify.app)** is a versatile platform for exploring movies, TV shows, novels, books, and anime. Built using TMDB API, Fictora aims to deliver a seamless and engaging experience for entertainment enthusiasts. The platform currently focuses on movies, with plans to integrate Jikan and Google Books APIs for anime and book data.
 
-![Fictionix Logo](public/image.png)
+![Fictora Logo](public/image.png)
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ Fictionix is a versatile platform for exploring movies, TV shows, novels, books,
 
 ## Introduction
 
-Fictionix is designed to bring together diverse forms of entertainment into one comprehensive platform. Users can discover and explore detailed information about their favorite movies, TV shows, books, and anime.
+Fictora is designed to bring together diverse forms of entertainment into one comprehensive platform. Users can discover and explore detailed information about their favorite movies, TV shows, books, and anime.
 
 ## Features
 
@@ -95,15 +95,15 @@ Fictionix is designed to bring together diverse forms of entertainment into one 
 
 ## Installation
 
-Follow these steps to set up Fictionix locally:
+Follow these steps to set up Fictora locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fictionix.git
+   git clone https://github.com/yourusername/fictora.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd fictionix
+   cd fictora
    ```
 3. Install dependencies:
    ```bash

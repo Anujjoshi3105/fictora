@@ -23,7 +23,6 @@ export default async function Movies() {
 
       <section className="container space-y-8 py-12">
         <TrendCarousel
-          type="movie"
           title="Trending Movies"
           link="/trending/movie"
           items={movies}

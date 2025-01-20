@@ -18,11 +18,11 @@ import {
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  metadataBase: new URL("https://fictionix.netlify.app/"),
-  applicationName: "Fictionix",
-  name: "FICTIONIX - Explore Dream Discover.",
+  metadataBase: new URL("https://fictora.netlify.app/"),
+  applicationName: "Fictora",
+  name: "Fictora - Explore Dream Discover.",
   description:
-    "Fictionix is your go-to platform for discovering curated recommendations, reviews, and the latest trends in anime, books, movies, and pop culture. Explore stories, stay inspired, and connect with enthusiasts worldwide.",
+    "Fictora is your go-to platform for discovering curated recommendations, reviews, and the latest trends in anime, books, movies, and pop culture. Explore stories, stay inspired, and connect with enthusiasts worldwide.",
   mainNav: [
     {
       title: "Home",
@@ -30,7 +30,7 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/anujjoshi3105/fictionix",
+    github: "https://github.com/anujjoshi3105/fictora",
     next: "https://nextjs.org",
     vercel: "https://vercel.com",
     shadcn: "https://ui.shadcn.com/",
@@ -44,7 +44,7 @@ export const siteConfig = {
     web: "https://anujjoshi.netlify.app",
   },
   keywords: [
-    "Fictionix",
+    "Fictora",
     "Entertainment Recommendations",
     "Anime News",
     "Book Reviews",
@@ -68,17 +68,17 @@ export const siteConfig = {
   ],
   openGraph: {
     type: "website",
-    url: "https://fictionix.netlify.app/",
+    url: "https://fictora.netlify.app/",
     title:
-      "Fictionix - Discover, Dream, and Immerse Yourself in the Best of Pop Culture",
+      "Fictora - Discover, Dream, and Immerse Yourself in the Best of Pop Culture",
     description:
-      "Fictionix is your go-to platform for discovering curated recommendations, reviews, and the latest trends in anime, books, movies, and pop culture. Explore stories, stay inspired, and connect with enthusiasts worldwide.",
+      "Fictora is your go-to platform for discovering curated recommendations, reviews, and the latest trends in anime, books, movies, and pop culture. Explore stories, stay inspired, and connect with enthusiasts worldwide.",
     images: [
       {
         url: "/logo.svg",
         width: 1200,
         height: 630,
-        alt: "Fictionix Logo",
+        alt: "Fictora Logo",
       },
     ],
     locale: "en_US",
@@ -86,12 +86,12 @@ export const siteConfig = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Fictionix - Discover, Dream, and Immerse Yourself in the Best of Pop Culture",
+      "Fictora - Discover, Dream, and Immerse Yourself in the Best of Pop Culture",
     description:
-      "Fictionix is your go-to platform for discovering curated recommendations, reviews, and the latest trends in anime, books, movies, and pop culture. Explore stories, stay inspired, and connect with enthusiasts worldwide.",
+      "Fictora is your go-to platform for discovering curated recommendations, reviews, and the latest trends in anime, books, movies, and pop culture. Explore stories, stay inspired, and connect with enthusiasts worldwide.",
     images: "/logo.svg",
-    creator: "@fictionix",
-    site: "@fictionix",
+    creator: "@fictora",
+    site: "@fictora",
   },
 };
 
@@ -107,6 +107,13 @@ const home = {
   title: "Home",
   href: "/",
   icon: HomeIcon,
+};
+
+const trending = {
+  title: "Trending",
+  icon: TrendingUpIcon,
+  href: "/trending",
+  description: pages.trending.root.description,
 };
 
 const movies = {
@@ -199,6 +206,7 @@ const tvShows = {
   ],
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const anime = {
   title: "Anime",
   href: "/anime",
@@ -257,61 +265,16 @@ const books = {
       description: pages.movie.discover.description,
     },
     {
-      title: "Trending",
-      href: "/book/trending",
-      icon: TrendingUpIcon,
-      description: pages.books.trending.description,
-    },
-    {
-      title: "Popular",
-      href: "/books/popular",
-      icon: HeartIcon,
-      description: pages.books.popular.description,
-    },
-    {
       title: "Top Rated",
-      href: "/books/top-rated",
+      href: "/book/top-rated",
       icon: StarIcon,
       description: pages.books.topRated.description,
     },
   ],
 };
 
-const trending = {
-  title: "Trending",
-  icon: TrendingUpIcon,
-  href: "/trending",
-  description: pages.trending.root.description,
-  items: [
-    {
-      title: "Movies",
-      href: "/trending/movie",
-      icon: ClapperboardIcon,
-      description: pages.trending.movie.description,
-    },
-    {
-      title: "TV Shows",
-      href: "/trending/tv",
-      icon: TvIcon,
-      description: pages.trending.tv.description,
-    },
-    {
-      title: "Anime",
-      href: "/trending/anime",
-      icon: Atom,
-      description: pages.trending.anime.description,
-    },
-    {
-      title: "Books",
-      href: "/trending/book",
-      icon: Book,
-      description: pages.trending.book.description,
-    },
-  ],
-};
-
 export const navigation = {
-  items: [home, movies, tvShows, anime, books, trending] as NavItem[],
+  items: [home, trending, movies, tvShows, books] as NavItem[],
 };
 
 export const availableParams = [
